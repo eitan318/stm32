@@ -1,23 +1,22 @@
 #include "led.h"
-#include "gpio.h"
 
-void led1_init() {
+void led_init(gpio_pin_t *pin) {
   // Clear moder
-  GPIOB->MODER &= ~(0x3U << (PIN_LED1 * 2));
+  pin->gpio->MODER &= ~(0x3U << (pin->idx * 2));
 
   // Set mode to output
-  GPIOB->MODER |= (GPIO_MODER_GPOUTPUT << (PIN_LED1 * 2));
+  pin->gpio->MODER |= (GPIO_MODER_GPOUTPUT << (pin->idx * 2));
 
   // Set output type to push-pull (default)
-  GPIOB->OTYPER |= (GPIO_OTYPE_PUSHPULL << PIN_LED1);
+  pin->gpio->OTYPER |= (GPIO_OTYPE_PUSHPULL << pin->idx);
 }
 
-void led1_on() {
+void led_on(gpio_pin_t *pin) {
   // Set the pin of the LED
-  GPIOB->BSRR = (1U << PIN_LED1);
+  pin->gpio->BSRR = (1U << pin->idx);
 }
 
-void led1_off() {
+void led_off(gpio_pin_t *pin) {
   // Reset the pin of the LED
-  GPIOB->BSRR = (1U << (PIN_LED1 + 16));
+  pin->gpio->BSRR = (1U << (pin->idx + 16));
 }

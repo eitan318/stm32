@@ -1,3 +1,4 @@
+#pragma once
 #include <stdint.h>
 
 /* Created based on "GPIO register map" table in the Reference Manual */
@@ -11,16 +12,32 @@ typedef struct {
   volatile uint32_t BSRR;
   volatile uint32_t LCKR;
   volatile uint32_t AFR[2];
-} GPIO_Registers;
+} gpio_regs_t;
 
 /* GPIO base addresses */
 #define GPIOA_BASE 0x58020000
 #define GPIOB_BASE 0x58020400
 #define GPIOC_BASE 0x58020800
+#define GPIOD_BASE 0x58020c00
+#define GPIOE_BASE 0x58021000
+#define GPIOF_BASE 0x58021400
+#define GPIOG_BASE 0x58021800
+#define GPIOH_BASE 0x58021c00
+#define GPIOI_BASE 0x58022000
+#define GPIOJ_BASE 0x58022400
+#define GPIOK_BASE 0x58022800
 
-#define GPIOA ((GPIO_Registers *)GPIOA_BASE)
-#define GPIOB ((GPIO_Registers *)GPIOB_BASE)
-#define GPIOC ((GPIO_Registers *)GPIOC_BASE)
+#define GPIOA ((gpio_regs_t *)GPIOA_BASE)
+#define GPIOB ((gpio_regs_t *)GPIOB_BASE)
+#define GPIOC ((gpio_regs_t *)GPIOC_BASE)
+#define GPIOD ((gpio_regs_t *)GPIOD_BASE)
+#define GPIOE ((gpio_regs_t *)GPIOE_BASE)
+#define GPIOF ((gpio_regs_t *)GPIOF_BASE)
+#define GPIOG ((gpio_regs_t *)GPIOG_BASE)
+#define GPIOH ((gpio_regs_t *)GPIOH_BASE)
+#define GPIOI ((gpio_regs_t *)GPIOI_BASE)
+#define GPIOJ ((gpio_regs_t *)GPIOJ_BASE)
+#define GPIOK ((gpio_regs_t *)GPIOK_BASE)
 
 /* GPIO OTYPER values (2 bits per pin) */
 #define GPIO_MODER_INPUT 0U
@@ -37,3 +54,8 @@ typedef struct {
 #define GPIO_PUPDR_PULLUP 1U
 #define GPIO_PUPDR_PULLDOWN 2U
 #define GPIO_PUPDR_RESERVED 3U
+
+typedef struct {
+  gpio_regs_t *gpio;
+  uint8_t idx;
+} gpio_pin_t;
