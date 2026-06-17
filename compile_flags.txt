@@ -1,0 +1,4 @@
+-Iinclude
+-mcpu=cortex-m7
+-mthumb
+--target=arm-none-eabi
