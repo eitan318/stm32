@@ -22,7 +22,7 @@ typedef struct {
 #define GPIOB ((GPIO_Registers *)GPIOB_BASE)
 #define GPIOC ((GPIO_Registers *)GPIOC_BASE)
 
-/* GPIO OTYPER values (1 bit per pin) */
+/* GPIO OTYPER values (2 bits per pin) */
 #define GPIO_MODER_INPUT 0U
 #define GPIO_MODER_GPOUTPUT 1U
 #define GPIO_MODER_AF 2U
@@ -31,3 +31,9 @@ typedef struct {
 /* GPIO OTYPER values (1 bit per pin) */
 #define GPIO_OTYPE_PUSHPULL 0U
 #define GPIO_OTYPE_OPENDRAIN 1U
+
+/* GPIO PUPDR values (2 bits per pin) */
+#define GPIO_PUPDR_NONE 0U
+#define GPIO_PUPDR_PULLUP 1U
+#define GPIO_PUPDR_PULLDOWN 2U
+#define GPIO_PUPDR_RESERVED 3U
