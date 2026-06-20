@@ -1,6 +1,8 @@
 #include "led.h"
 
 void led_init(gpio_pin_t *pin) {
+  gpio_clock_enable(pin->gpio);
+
   // Clear moder
   pin->gpio->MODER &= ~(0x3U << (pin->idx * 2));
 

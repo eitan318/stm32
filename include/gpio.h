@@ -1,7 +1,6 @@
 #pragma once
 #include <stdint.h>
 
-/* Created based on "GPIO register map" table in the Reference Manual */
 typedef struct {
   volatile uint32_t MODER;
   volatile uint32_t OTYPER;
@@ -14,7 +13,7 @@ typedef struct {
   volatile uint32_t AFR[2];
 } gpio_regs_t;
 
-/* GPIO base addresses */
+// GPIO base addresses
 #define GPIOA_BASE 0x58020000
 #define GPIOB_BASE 0x58020400
 #define GPIOC_BASE 0x58020800
@@ -39,7 +38,7 @@ typedef struct {
 #define GPIOJ ((gpio_regs_t *)GPIOJ_BASE)
 #define GPIOK ((gpio_regs_t *)GPIOK_BASE)
 
-/* RCC Clock Enable for GPIO */
+// RCC Clock Enable for GPIO
 #define RCC_AHB4ENR_GPIOAEN (1U << 0)
 #define RCC_AHB4ENR_GPIOBEN (1U << 1)
 #define RCC_AHB4ENR_GPIOCEN (1U << 2)
@@ -52,17 +51,17 @@ typedef struct {
 #define RCC_AHB4ENR_GPIOJEN (1U << 9)
 #define RCC_AHB4ENR_GPIOKEN (1U << 10)
 
-/* GPIO OTYPER values (2 bits per pin) */
+// GPIO OTYPER values (2 bits per pin)
 #define GPIO_MODER_INPUT 0U
 #define GPIO_MODER_GPOUTPUT 1U
 #define GPIO_MODER_AF 2U
 #define GPIO_MODER_ANALOG 3U
 
-/* GPIO OTYPER values (1 bit per pin) */
+// GPIO OTYPER values (1 bit per pin)
 #define GPIO_OTYPE_PUSHPULL 0U
 #define GPIO_OTYPE_OPENDRAIN 1U
 
-/* GPIO PUPDR values (2 bits per pin) */
+// GPIO PUPDR values (2 bits per pin)
 #define GPIO_PUPDR_NONE 0U
 #define GPIO_PUPDR_PULLUP 1U
 #define GPIO_PUPDR_PULLDOWN 2U
@@ -72,3 +71,5 @@ typedef struct {
   gpio_regs_t *gpio;
   uint8_t idx;
 } gpio_pin_t;
+
+void gpio_clock_enable(gpio_regs_t *gpio);

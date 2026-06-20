@@ -7,7 +7,9 @@ typedef struct {
   volatile uint32_t EXTICR[4];
 } syscfg_regs_t;
 
-#define SYSCFG_BASE 0x58000400UL
+#define SYSCFG_BASE 0x58000400
 #define SYSCFG ((syscfg_regs_t *)SYSCFG_BASE)
 
 #define RCC_APB4ENR_SYSCFGEN (1U << 1)
+
+void syscfg_init();

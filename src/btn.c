@@ -1,7 +1,11 @@
 #include "btn.h"
 #include "gpio.h"
+#include "rcc.h"
 
 void button_init(gpio_pin_t *pin) {
+  RCC->AHB4ENR |= RCC_AHB4ENR_GPIOCEN;
+  (void)RCC->AHB4ENR;
+
   // Clear MODER
   pin->gpio->MODER &= ~(3U << (pin->idx * 2));
 
@@ -15,4 +19,6 @@ void button_init(gpio_pin_t *pin) {
   GPIOC->PUPDR |= GPIO_PUPDR_NONE << (pin->idx * 2);
 }
 
-int button_get(gpio_pin_t *pin) { return pin->gpio->IDR & (1U << pin->idx); }
+bool button_is_on(gpio_pin_t *pin) {
+  return (pin->gpio->IDR & (1U << pin->idx)) != 0;
+}

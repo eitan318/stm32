@@ -1,6 +1,6 @@
+#pragma once
 #include <stdint.h>
 
-/* RCC base addresses */
 #define RCC_BASE 0x58024400
 
 typedef struct {

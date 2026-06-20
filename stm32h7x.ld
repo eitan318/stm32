@@ -25,11 +25,17 @@ SECTIONS
 
     /* Starts in FLASH, copied to RAM at startup */
     .data : {
+        _sdata = .;
         *(.data*)
+        _edata = .;
     } > AXI_SRAM AT > FLASH_BANK1
 
+    _sidata = LOADADDR(.data);
+
     .bss : {
+        _sbss = .;
         *(.bss*)
         *(COMMON)
+        _ebss = .;
     } > AXI_SRAM
 }
