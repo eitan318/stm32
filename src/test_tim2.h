@@ -28,7 +28,7 @@ void timer_test() {
   led_init(&g_pin_led_red);
   button_init(&pin_user_btn);
   nvic_irq_enable(TIM2_IRQn);
-  tim2_init(1, 64 * 1000000);
+  tim2_init(1, CLOCK_FREQ_HZ);
 
   for (;;) {
     if (button_is_on(&pin_user_btn)) {

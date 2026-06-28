@@ -1,7 +1,7 @@
 #pragma once
 #include <stdint.h>
 
-#define RCC_BASE 0x58024400
+#define RCC_BASE 0x58024400UL
 
 typedef struct {
   volatile uint32_t CR;

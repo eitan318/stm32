@@ -3,7 +3,7 @@
 
 typedef struct {
   volatile uint32_t RTSR1;
-  volatile uint32_t FTSR1;
+  volatile uint32_t FTSR1; // Falling Trigger Selection Registe
   volatile uint32_t SWIER1;
   volatile uint32_t D3PMR1;
   volatile uint32_t D3PCR1L;
@@ -36,5 +36,8 @@ typedef struct {
   volatile uint32_t PR3;
 } exti_regs_t;
 
+// Extended Interrupt/Event Controller
 #define EXTI_BASE 0x58000000UL
-#define EXTI (exti_regs_t * (EXTI_BASE))
+#define EXTI ((exti_regs_t *)EXTI_BASE)
+
+void exti_configure_edge(uint32_t index);

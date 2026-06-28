@@ -3,15 +3,15 @@
 #include <stdint.h>
 
 // NVIC Register Addresses
-#define NVIC_ISER_BASE 0xe000e100 // Interrupt Set-Enable Registers
-#define NVIC_ICER_BASE 0xe000e180 // Interrupt Clear-Enable Registers
-#define NVIC_ISPR_BASE 0xe000e200 // Interrupt Set-Pending Registers
-#define NVIC_ICPR_BASE 0xe000e280 // Interrupt Clear-Pending Registers
-#define NVIC_IABR_BASE 0xe000e300 // Interrupt Active Bit Registers
-#define NVIC_IPR_BASE 0xe000e400  // Interrupt Priority Registers
+#define NVIC_ISER_BASE 0xe000e100UL // Interrupt Set-Enable Registers
+#define NVIC_ICER_BASE 0xe000e180UL // Interrupt Clear-Enable Registers
+#define NVIC_ISPR_BASE 0xe000e200UL // Interrupt Set-Pending Registers
+#define NVIC_ICPR_BASE 0xe000e280UL // Interrupt Clear-Pending Registers
+#define NVIC_IABR_BASE 0xe000e300UL // Interrupt Active Bit Registers
+#define NVIC_IPR_BASE 0xe000e400UL  // Interrupt Priority Registers
 
 // System Control Block
-#define SCB_BASE 0xe000ed00
+#define SCB_BASE 0xe000ed00UL
 #define SCB_AIRCR (*(volatile uint32_t *)(SCB_BASE + 0x0C))
 
 // NVIC register arrays

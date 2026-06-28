@@ -7,16 +7,16 @@ typedef struct {
   volatile uint32_t CR1; // Control Register 1
   volatile uint32_t CR2;
   volatile uint32_t SMCR;
-  volatile uint32_t DIER; // DMA/Interrupt enable registe
+  volatile uint32_t DIER; // DMA/Interrupt enable register
   volatile uint32_t SR;   // Status Register
 
   volatile uint32_t EGR;   // Event generation register
   volatile uint32_t CCMR1; // Capture/Compare mode register 1
   volatile uint32_t CCMR2; // Capture/Compare mode register 2
-  volatile uint32_t CCER;  //
+  volatile uint32_t CCER;  // Capture/Compare enable register
   volatile uint32_t CNT;   // Counter
   volatile uint32_t PSC;   // Prescalar
-  volatile uint32_t ARR;   // arr
+  volatile uint32_t ARR;   // Auto-reload register
   volatile uint32_t RCR;
   volatile uint32_t CCR1;
   volatile uint32_t CCR2;
@@ -52,7 +52,7 @@ typedef struct {
 // Capture/Compare 1 Set
 #define TIM_CCMR1_CC1S_OC (0U << 0) // Output compare
 // Output Compare 1 Preload enable
-#define TIM_CCMR1_OC1PE (1 << 3)
+#define TIM_CCMR1_OC1PE (1U << 3)
 // Output Compare 1 Mode
 #define TIM_CCMR1_OC1M_PWM1 (PWM_MODE1 << 4)
 
@@ -81,7 +81,7 @@ typedef struct {
 
 /*CCER*/
 // Output Compare 3 Enable
-#define TIM_CCER_CC3E (1 << 8)
+#define TIM_CCER_CC3E (1U << 8)
 
 /*  Timer Frequency = APB Clock / (PSC + 1)
  *
